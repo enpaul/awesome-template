@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "awesome-project"
+name = "awesome-template"
 version = "0.0.0"
 description = "A template project that does nothing"
 authors = ["Ethan Paul <e@enp.one>"]
-repository = "https://github.com/enpaul/pyproject-template"
-packages = [{include = "awesome_project"}]
+repository = "https://github.com/enpaul/awesome-template/"
+packages = [{include = "awesome_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.6"
@@ -13,6 +13,7 @@ python = "^3.6"
 bandit = "^1.6.2"
 black = { git = "https://github.com/psf/black.git" }
 ipython = "^7.10.2"
+mypy = "^0.782"
 pre-commit = "^2.1.1"
 pylint = "^2.4.4"
 pytest = "^5.2.0"
@@ -21,9 +22,8 @@ reorder-python-imports = "^1.8.0"
 safety = "^1.9.0"
 sphinx = "^3.0.4"
 sphinx-autodoc-typehints = "^1.8.0"
-tox = "^3.14.0"
-mypy = "^0.782"
 toml = "^0.10.1"
+tox = "^3.14.0"
 
 [build-system]
 requires = ["poetry>=1.0.0"]

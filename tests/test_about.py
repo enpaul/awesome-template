@@ -3,7 +3,7 @@ from pathlib import Path
 
 import toml
 
-from awesome_project import __about__
+from awesome_template import __about__
 
 
 def test_about():

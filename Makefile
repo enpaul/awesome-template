@@ -1,7 +1,7 @@
-# Awesome Project makefile
+# Awesome Template makefile
 
 # You can set these variables from the command line
-PROJECT = awesome_project
+PROJECT = awesome_template
 
 .PHONY: help
 # Put it first so that "make" without argument is like "make help"

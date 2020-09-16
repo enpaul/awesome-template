@@ -65,7 +65,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
-docs/awesome_project*.rst
+docs/awesome_template*.rst
 docs/modules.rst
 
 # PyBuilder

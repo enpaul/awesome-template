@@ -11,7 +11,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.resolve()
 ABOUT = {}
-with open(Path(BASE_DIR, "..", "awesome_project", "__about__.py")) as infile:
+with open(Path(BASE_DIR, "..", "awesome_template", "__about__.py")) as infile:
     exec(infile.read(), ABOUT)
 
 
