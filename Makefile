@@ -1,7 +1,4 @@
-# Awesome Template makefile
-
-# You can set these variables from the command line
-PROJECT = awesome_template
+# awesome-template makefile
 
 .PHONY: help
 # Put it first so that "make" without argument is like "make help"
@@ -11,27 +8,20 @@ help: ## List Makefile targets
 	$(info Makefile documentation)
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
-tox: clean
-	tox
-
 clean-tox:
-	rm -rf ./.mypy_cache
-	rm -rf ./.tox
-	rm -f .coverage
-	find ./tests -type d -name __pycache__ -prune -exec rm -rf {} \;
+	rm --recursive --force ./.mypy_cache
+	rm --recursive --force ./.tox
+	rm --recursive --force tests/__pycache__/
+	rm --recursive --force .pytest_cache/
+	rm --force .coverage
 
 clean-py:
-	rm -rf ./dist
-	rm -rf ./build
-	rm -rf ./*.egg-info
-	find ./$(PROJECT) -type d -name __pycache__ -prune -exec rm -rf {} \;
+	rm --recursive --force ./dist
+	rm --recursive --force ./build
+	rm --recursive --force ./*.egg-info
+	find ./awesome_template -type d -name __pycache__ -prune -exec rm -rf {} \;
 
-clean-docs:
-	rm -rf docs/_build
-	rm -f docs/$(PROJECT)*.rst
-	rm -f docs/modules.rst
-
-clean: clean-tox clean-py clean-docs; ## Clean temp build/cache files and directories
+clean: clean-tox clean-py; ## Clean temp build/cache files and directories
 
 wheel: ## Build Python binary distribution wheel package
 	poetry build --format wheel
@@ -40,7 +30,12 @@ source: ## Build Python source distribution package
 	poetry build --format sdist
 
 test: ## Run the project testsuite(s)
-	poetry run tox -r
+	poetry run tox --recreate
 
-docs: ## Build the documentation using Sphinx
-	poetry run tox -e docs
+dev: ## Create the local dev environment
+	poetry install
+	poetry run pre-commit install
+	poetry shell
+
+publish: test wheel source ## Build and upload to pypi (requires $PYPI_API_KEY be set)
+	@poetry publish --username __token__ --password $(PYPI_API_KEY)
