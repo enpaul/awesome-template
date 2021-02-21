@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "awesome-template"
 version = "0.0.0"
-description = "A template project that does nothing"
+description = "An awesome python template project that does nothing"
 authors = ["Ethan Paul <24588726+enpaul@users.noreply.github.com>"]
 repository = "https://github.com/enpaul/awesome-template/"
 packages = [
@@ -13,6 +13,7 @@ include = [
 ]
 keywords = ["awesome", "template"]
 readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
